@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colores y Emociones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #colorPicker {
+            width: 150px;
+            height: 150px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        .emotion {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+	<h1>;)</h1>
+    <h1>Hola! selecciona el color que relacionas con cada emoción.</h1>
+    <div class="emotion" id="emotionText">Desprecio</div>
+    <input type="color" id="colorPicker">
+    <br>
+    <button onclick="nextEmotion()">Siguiente</button>
+
+    <script>
+        const emotions = ["Desprecio", "Alegría", "Tristeza", "Ira", "Sorpresa", "Miedo", "Culpa", "Esperanza","Enamoramiento", "Verguenza", "Alivio", "Ansiedad"];
+        let currentEmotion = 0;
+        let results = [];
+
+        function nextEmotion() {
+            const colorValue = document.getElementById("colorPicker").value;
+            results.push({ emotion: emotions[currentEmotion], color: colorValue });
+
+            currentEmotion++;
+            if (currentEmotion < emotions.length) {
+                document.getElementById("emotionText").textContent = emotions[currentEmotion];
+            } else {
+                alert("Gracias por completar el experimento. Aquí están tus resultados: " + JSON.stringify(results));
+                console.log(results);
+            }
+        }
+    </script>
+</body>
+</html>
+
